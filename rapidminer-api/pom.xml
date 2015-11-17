@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.rapidminer</groupId>
   <artifactId>rapidminer-api</artifactId>
-  <version>0.1.1.1</version>
+  <version>0.1.1.1-SNAPSHOT</version>
   <licenses>
     <license>
       <name>GNU Lesser General Public License, Version 3.0</name>
@@ -15,6 +15,18 @@
     <name>RapidMiner GmbH</name>
     <url>www.rapidminer.com</url>
   </organization>
+  <scm>
+    <url>https://github.com/aborg0/rapidminer-api</url>
+    <connection>scm:git:https://github.com/aborg0/rapidminer-api</connection>
+    <developerConnection>scm:git:https://github.com/aborg0/rapidminer-api</developerConnection>
+  </scm>
+  <!-- http://bithacker.org/post/120996678805/publishing-artifacts-to-bintray-from-travis-ci -->
+  <distributionManagement>
+    <repository>
+      <id>bintray_aborg0</id>
+      <url>https://api.bintray.com/maven/aborg0/rapidminer-api/rapidminer-api;publish=1</url>
+    </repository>
+  </distributionManagement>
   <build>
   	<plugins>
   	  <plugin>
@@ -34,7 +46,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.5</version>
+        <version>1.9.1</version>
         <executions>
           <execution>
             <id>set-osgi-version</id>
@@ -50,7 +62,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>2.1.1</version>
+        <version>2.4</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -65,14 +77,20 @@
             <manifestEntries>
               <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
               <Bundle-Name>${name}</Bundle-Name>
-              <Bundle-SymbolicName>${groupId}.${artifactId}.source</Bundle-SymbolicName>
-              <Bundle-Vendor>${organization.name}</Bundle-Vendor>
+              <Bundle-SymbolicName>${project.groupId}.${project.artifactId}.source</Bundle-SymbolicName>
+              <Bundle-Vendor>${project.organization.name}</Bundle-Vendor>
               <Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
-              <Eclipse-SourceBundle>${groupId}.${artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+              <Eclipse-SourceBundle>${project.groupId}.${project.artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
             </manifestEntries>
           </archive>
         </configuration>
-      </plugin> 
+      </plugin>
+      <!-- http://bithacker.org/post/120996678805/publishing-artifacts-to-bintray-from-travis-ci -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
+      </plugin>
   	</plugins>
   </build>
   <properties>
