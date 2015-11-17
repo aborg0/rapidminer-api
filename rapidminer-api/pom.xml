@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.rapidminer</groupId>
   <artifactId>rapidminer-api</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.1.1</version>
   <licenses>
     <license>
       <name>GNU Lesser General Public License, Version 3.0</name>
@@ -15,4 +15,70 @@
     <name>RapidMiner GmbH</name>
     <url>www.rapidminer.com</url>
   </organization>
+  <build>
+  	<plugins>
+  	  <plugin>
+  	    <groupId>org.apache.felix</groupId>
+  	    <artifactId>maven-bundle-plugin</artifactId>
+  	    <version>3.0.1</version>
+  	    <extensions>true</extensions>
+  	    <configuration>
+  	      <instructions>
+  	        <Export-Package>com.rapidminer.core.concurrency</Export-Package>
+  	        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+  	      </instructions>
+  	    </configuration>
+  	  </plugin>
+  	  <!-- From: http://rajakannappan.blogspot.com/2010/03/automating-eclipse-source-bundle.html -->
+  	  <!-- Build helper maven plugin sets the parsedVersion.osgiVersion property -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>set-osgi-version</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- source maven plugin creates the source bundle and adds manifest --> 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            </execution>
+        </executions>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+              <Bundle-Name>${name}</Bundle-Name>
+              <Bundle-SymbolicName>${groupId}.${artifactId}.source</Bundle-SymbolicName>
+              <Bundle-Vendor>${organization.name}</Bundle-Vendor>
+              <Bundle-Version>${parsedVersion.osgiVersion}</Bundle-Version>
+              <Eclipse-SourceBundle>${groupId}.${artifactId};version="${parsedVersion.osgiVersion}";roots:="."</Eclipse-SourceBundle>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin> 
+  	</plugins>
+  </build>
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <packaging>bundle</packaging>
 </project>

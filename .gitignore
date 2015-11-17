@@ -2,6 +2,7 @@ rapidminer-api/target/
 rapidminer-api/.classpath
 rapidminer-api/.settings/
 rapidminer-api/.project
+rapidminer-api/maven-status
 
 pom.xml.tag
 pom.xml.releaseBackup
