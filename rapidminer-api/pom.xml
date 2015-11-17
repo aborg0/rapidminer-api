@@ -19,15 +19,21 @@
     <url>https://github.com/aborg0/rapidminer-api</url>
     <connection>scm:git:https://github.com/aborg0/rapidminer-api</connection>
     <developerConnection>scm:git:https://github.com/aborg0/rapidminer-api</developerConnection>
-    <tag>HEAD</tag>
   </scm>
   <!-- http://bithacker.org/post/120996678805/publishing-artifacts-to-bintray-from-travis-ci -->
   <distributionManagement>
     <repository>
-      <id>bintray-aborg0-maven</id>
-      <url>https://api.bintray.com/maven/aborg0/rapidminer-api/rapidminer-api;publish=1</url>
+      <id>bintrayAborgMaven</id>
+      <url>https://api.bintray.com/maven/aborg0/rapidminer-api/maven/rapidminer-api/;publish=1</url>
     </repository>
   </distributionManagement>
+  <repositories>
+    <repository>
+      <id>bintrayAborgMaven</id>
+      <snapshots><enabled>false</enabled></snapshots>
+      <url>http://dl.bintray.com/aborg0/maven</url>
+    </repository>
+  </repositories>
   <build>
   	<plugins>
   	  <plugin>
@@ -90,7 +96,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
+        <version>2.4.2</version>
       </plugin>
   	</plugins>
   </build>
