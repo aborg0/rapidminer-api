@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.rapidminer</groupId>
   <artifactId>rapidminer-api</artifactId>
-  <version>0.1.1.1</version>
+  <version>0.1.1.1-SNAPSHOT</version>
   <licenses>
     <license>
       <name>GNU Lesser General Public License, Version 3.0</name>
@@ -100,4 +100,12 @@
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <packaging>bundle</packaging>
+  <ciManagement>
+  	<url>https://travis-ci.org/aborg0/rapidminer-api</url>
+  	<system>Travis</system>
+  </ciManagement>
+  <issueManagement>
+  	<system>GitHub</system>
+  	<url>https://github.com/aborg0/rapidminer-api/issues</url>
+  </issueManagement>
 </project>
