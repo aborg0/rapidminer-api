@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mind_era.com.rapidminer</groupId>
   <artifactId>rapidminer-api</artifactId>
-  <version>0.1.1.1-SNAPSHOT</version>
+  <version>0.1.1</version>
   <licenses>
     <license>
       <name>GNU Lesser General Public License, Version 3.0</name>
@@ -23,14 +23,14 @@
   <!-- http://bithacker.org/post/120996678805/publishing-artifacts-to-bintray-from-travis-ci -->
   <distributionManagement>
     <repository>
-      <id>bintrayAborgMaven</id>
-      <url>https://api.bintray.com/maven/aborg0/maven/rapidminer-api/;publish=1</url>
+      <id>central</id>
+      <url>https://api.bintray.com/maven/aborg0/maven/rapidminer-api/</url>
     </repository>
   </distributionManagement>
   <repositories>
     <repository>
       <id>bintrayAborgMaven</id>
-      <snapshots><enabled>false</enabled></snapshots>
+      <snapshots><enabled>true</enabled></snapshots>
       <url>http://dl.bintray.com/aborg0/maven</url>
     </repository>
   </repositories>
